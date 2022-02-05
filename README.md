@@ -1,42 +1,65 @@
-# Teste de seleção para vaga de Java
+# Teste CD2
+> Implementar para empresa de transporte de cargas SigaBem o endpoint para o cálculo do preço do frete.
 
-## Faça um fork desse projeto e siga as instruções a seguir utilizando esse projeto.
+<i> * Necessário [Java 8+](https://www.oracle.com/java/technologies/downloads/), [MySql](https://mariadb.org/download/) e [Git](https://git-scm.com/downloads) </i>
 
-# Pré-requisitos
+App feito em
+<h3>Java SpringBoot</h3>
+    - Spring Data
+    - OpenFeign
+    - Swagger
+    - Gson
+    - Lombok
+    
+## Instalação
 
-Implementar apenas a API (Backend)
-Versão Java +8 (caso seja Java 8, verificar compatibilidade da sua IDE)
-Versão Spring Boot >= 2.4
-Banco de dados fica a seu critério (Sql, NoSql)
-Seu projeto deve obrigatoriamente ter as anotações: @Repository, @Entity e @Controller
-Documentação mínima da API (Swagger ou documento PDF)
+```sh
+git clone https://github.com/JoaoVitorOliMendes/JavaTest.git
+cd JavaTest
+```
 
-# Objetivo
-Implementar para empresa de transporte de cargas SigaBem o endpoint para o cálculo do preço do frete:
+## Iniciar App
 
-Você deve calcular o valor total do frete e a data prevista da entrega.
+```sh
+mvn spring-boot:run     *Configurar BD antes
 
-Considerar regras para calcular o valor do frete:
- * CEPs com DDDs iguais tem 50% de desconto no valor do frete e entrega prevista de 1 dia
- * CEPs de estados iguais tem 75% de desconto no valor do frete e entrega prevista de 3 dias
- * CEPs de estados diferentes não deve ser aplicado o desconto no valor do frete e entrega prevista de 10 dias
- * O valor do frete é cobrado pelo peso da encomenda, o valor para cada KG é R$1,00
+ou
 
-Seu input de entrada deve ser “peso”, “cepOrigem”, “cepDestino” e “nomeDestinatario“
+docker-compose up
+```
+Exemplo de requisicao POST:
+```sh
+  	{
+  		"cepDestino": {
+    		"cep": "08090-284"
+  		},
+  		"cepOrigem": {
+    		"cep": "31070020"
+  		},
+  		"nomeDestinatario": "Joao Vitor de Oliveira Mendes",
+  		"peso": 10.5
+	}
+```
 
-Você utilizará a API gratuita de consulta de CEP abaixo: 
-Documentação da API: https://viacep.com.br/
-Exemplo do GET: https://viacep.com.br/ws/<CEP_A_CONSULTAR>/json/
+Para acessar swagger-ui:
+http://localhost:8080/swagger-ui.html
 
-Endpoint pode ser público
-Response/Output deve possuir: “vlTotalFrete” e “dataPrevistaEntrega”, “cepOrigem” e “cepDestino”
-Deve ser persistido no banco os valores da cotação os valores consultados: “peso”, “cepOrigem”, “cepDestino”, “nomeDestinatario”, “vlTotalFrete”, “dataPrevistaEntrega” e “dataConsulta”
+Caso estiver testando a aplicacao localmente:
+  - Criar Banco de dados MySql JavaTest
+  - Mudar Application.properties para a configuracao do banco de dados
 
+Caso Docker
+  - docker-compose up
 
+## Meta
 
-# Critérios de avaliação:
- * Implementação das regras de negócios para o cálculo do frete
- * Boas práticas de programação, arquitetura  e padrões de projetos
+JoaoVitor de Oliveira Mendes – [LinkedIn](https://www.linkedin.com/in/jo%C3%A3o-vitor-de-oliveira-mendes-6874b11b3/) – joaovitordeoliveiramendes@tutanota.com
 
-# Entrega: 
- * Disponibilizar um link do repositório no GitHub e encaminhar para developer@cd2.com.br
+[My Profile](https://github.com/JoaoVitorOliMendes)
+
+[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/datadog-metrics
+[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
+[wiki]: https://github.com/yourname/yourproject/wiki
